@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.Timer;
 import javax.swing.JTextArea;
+import static javax.swing.text.html.HTML.Tag.FONT;
+//import static javax.swing.text.html.CSS.Attribute.FONT;
 
 public class Ventana extends javax.swing.JFrame {
     
@@ -18,7 +20,7 @@ public class Ventana extends javax.swing.JFrame {
     private Stack<String> rehacer;
     private Nodo raizABB;
     private Timer timer;    
-    private Object Color;
+    
 
 
         public Ventana(){
@@ -101,6 +103,7 @@ public class Ventana extends javax.swing.JFrame {
 
         jMenu2.setText("Edición");
 
+        jMenuItemDeshacer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItemDeshacer.setText("Deshacer");
         jMenuItemDeshacer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +112,7 @@ public class Ventana extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItemDeshacer);
 
+        jMenuItemRehacer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItemRehacer.setText("Rehacer");
         jMenuItemRehacer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +121,7 @@ public class Ventana extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItemRehacer);
 
+        jMenuItemReemplazar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItemReemplazar.setText("Reemplazar");
         jMenuItemReemplazar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,6 +130,7 @@ public class Ventana extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItemReemplazar);
 
+        jMenuItemBuscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItemBuscar.setText("Buscar");
         jMenuItemBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,16 +161,25 @@ public class Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarActionPerformed
-       
+        guardarEstado();
         String palabra = JOptionPane.showInputDialog("Ingrese la palabra a buscar:");
-        buscar(palabra);
+        buscarEnABB(raizABB, palabra);
+        
+        
+        String text = jTextArea1.getText();
+        int ubicacion = text.indexOf(palabra);
+        
+        resaltarPalabra(ubicacion, palabra);
+        
+        
+        
 
        
     }//GEN-LAST:event_jMenuItemBuscarActionPerformed
 
     private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed
        
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        System.exit(0);
     }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
     private void jMenuItemReemplazarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemReemplazarActionPerformed
@@ -238,7 +253,31 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
     
-    
+private Nodo insertarEnABB(Nodo nodo, String palabra, int posicion) {
+        if (nodo == null) {
+            return new Nodo(palabra, posicion);
+        }
+        if (palabra.compareTo(nodo.palabra) < 0) {
+            nodo.izquierda = insertarEnABB(nodo.izquierda, palabra, posicion);
+        } else if (palabra.compareTo(nodo.palabra) > 0) {
+            nodo.derecha = insertarEnABB(nodo.derecha, palabra, posicion);
+        }
+        return nodo;
+    }    
+
+// Función para actualizar el Árbol Binario de Búsqueda con el texto actual
+    private void actualizarABB() {
+        raizABB = null;
+        String texto = jTextArea1.getText();
+        String[] palabras = texto.split("\\s+");
+        int posicion = 0;
+
+        for (String palabra : palabras) {
+            if (!palabra.isEmpty()) {
+                raizABB = insertarEnABB(raizABB, palabra, posicion++);
+            }
+        }
+    } 
     
     private void deshacer() {
         if (!deshacer.isEmpty()) {
@@ -299,33 +338,6 @@ public class Ventana extends javax.swing.JFrame {
         return jTextArea1;
     }
 
-    
-    private Nodo insertarEnABB(Nodo nodo, String palabra, int posicion) {
-        if (nodo == null) {
-            return new Nodo(palabra, posicion);
-        }
-        if (palabra.compareTo(nodo.palabra) < 0) {
-            nodo.izquierda = insertarEnABB(nodo.izquierda, palabra, posicion);
-        } else if (palabra.compareTo(nodo.palabra) > 0) {
-            nodo.derecha = insertarEnABB(nodo.derecha, palabra, posicion);
-        }
-        return nodo;
-    }
-    
-    // Función para actualizar el Árbol Binario de Búsqueda con el texto actual
-    private void actualizarABB() {
-        raizABB = null;
-        String texto = jTextArea1.getText();
-        String[] palabras = texto.split("\\s+");
-        int posicion = 0;
-
-        for (String palabra : palabras) {
-            if (!palabra.isEmpty()) {
-                raizABB = insertarEnABB(raizABB, palabra, posicion++);
-            }
-        }
-    }   
-    
     //Función para reemplazar una palabra por otra palabra
     private void reemplazar(String palabraBuscar, String palabraReemplazar) {
         String texto = jTextArea1.getText();
@@ -340,17 +352,16 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     
-    
-    // Función para resaltar una palabra en el JTextArea
+    //Función para resaltar una palabra en el JTextArea
     private void resaltarPalabra(int posicion, String palabra) {
         String texto = jTextArea1.getText();
-        int startIndex = texto.indexOf(palabra, posicion);
-        int endIndex = startIndex + palabra.length();
+        int indiceInicio = texto.indexOf(palabra, posicion);
+        int indiceFinal = indiceInicio + palabra.length();
 
-        jTextArea1.select(startIndex, endIndex);  // Seleccionar la palabra
-        jTextArea1.setSelectedTextColor(Color.RED);  // Cambiar color de la palabra
+        jTextArea1.setCaretPosition(posicion);  // Seleccionar la palabra
+        jTextArea1.moveCaretPosition(posicion + palabra.length());  // Cambiar color de la palabra
     }
-
+    
     // Función para agregar texto y guardar el estado para deshacer
     public void agregarTexto(String nuevoTexto) {
         deshacer.push(jTextArea1.getText());  // Guardar el estado previo
@@ -384,16 +395,27 @@ public class Ventana extends javax.swing.JFrame {
     // Función para buscar una palabra en el ABB
     private Nodo buscarEnABB(Nodo nodo, String palabra) {
         if (nodo == null) {
+            
+            JOptionPane.showMessageDialog(null, "No existe la palabra buscada");
+            
             return null;
+            
         }
+        
         if (palabra.equals(nodo.palabra)) {
+            JOptionPane.showMessageDialog(null, "La palabra " + nodo.palabra + " si existe en el texto!");
+            
             return nodo;
         }
         if (palabra.compareTo(nodo.palabra) < 0) {
+            
             return buscarEnABB(nodo.izquierda, palabra);
         } else {
+            
             return buscarEnABB(nodo.derecha, palabra);
+            
         }
+        
     }
 
     // Función para guardar el estado del texto
@@ -402,9 +424,6 @@ public class Ventana extends javax.swing.JFrame {
         rehacer.clear();  // Limpiar la pila de rehacer
         System.out.println("Cambios guardados automáticamente.");
     }
-    
-    
-
 
 }
 
