@@ -1,3 +1,5 @@
+//Se actualiza Rama Ventana.java
+
 package proyecto_dos;
 import java.util.Scanner;
 import java.util.Stack;
