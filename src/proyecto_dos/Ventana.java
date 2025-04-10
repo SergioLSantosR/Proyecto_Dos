@@ -212,8 +212,7 @@ public class Ventana extends javax.swing.JFrame {
         
         JOptionPane.showMessageDialog(null, "Esta es una aplicación aún en desarrollo por los estudiantes de la carrera de \nIngenieria en Sistemas de Información"
                 + " y Ciencias de la Computación de la \nUniversidad Mariano Gálvez de Guatemala, Sede Boca del Monte, \nEmerson Alvizures y Sergio Santos, del "
-                + "Curso de Programación III, Sección B");
-           
+                + "Curso de Programación III, Sección B");           
     }//GEN-LAST:event_JMenuAcercaDeActionPerformed
 
     
@@ -422,8 +421,7 @@ private Nodo insertarEnABB(Nodo nodo, String palabra, int posicion) {
         } else {
             
             return buscarEnABB(nodo.derecha, palabra);
-        }
-        
+        }        
     }
 
     // Función para guardar el estado del texto
