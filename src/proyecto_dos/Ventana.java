@@ -174,10 +174,8 @@ public class Ventana extends javax.swing.JFrame {
         guardarEstado();
         String palabra = JOptionPane.showInputDialog("Ingrese palabra a Buscar: ");
         buscarEnABB(raizABB, palabra);        
-        
         String text = jTextArea1.getText();
-        int ubicacion = text.indexOf(palabra);
-        
+        int ubicacion = text.indexOf(palabra);        
         resaltarPalabra(ubicacion, palabra);      
     }//GEN-LAST:event_jMenuItemBuscarActionPerformed
 
