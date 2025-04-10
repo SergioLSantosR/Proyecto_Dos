@@ -170,8 +170,7 @@ public class Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarActionPerformed
-        //Icon icono = new ImageIcon(getClass().getResource("/Buscar.png"));
-        
+        //Icon icono = new ImageIcon(getClass().getResource("/Buscar.png"));        
         guardarEstado();
         String palabra = JOptionPane.showInputDialog("Ingrese palabra a Buscar: ");
         buscarEnABB(raizABB, palabra);        
@@ -195,7 +194,7 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemReemplazarActionPerformed
 
     private void jTextArea1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyPressed
-            
+            //No existe codigo para este manejador de eventos
     }//GEN-LAST:event_jTextArea1KeyPressed
 
     private void jMenuItemDeshacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeshacerActionPerformed
