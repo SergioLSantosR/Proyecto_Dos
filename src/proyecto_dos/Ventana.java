@@ -170,10 +170,10 @@ public class Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarActionPerformed
-        Icon icono = new ImageIcon(getClass().getResource("/Buscar.png"));
+        //Icon icono = new ImageIcon(getClass().getResource("/Buscar.png"));
         
         guardarEstado();
-        String palabra = JOptionPane.showInputDialog(null, "Ingrese palabra a Buscar: ");
+        String palabra = JOptionPane.showInputDialog("Ingrese palabra a Buscar: ");
         buscarEnABB(raizABB, palabra);
         
         
@@ -192,8 +192,8 @@ public class Ventana extends javax.swing.JFrame {
     private void jMenuItemReemplazarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemReemplazarActionPerformed
         // TODO add your handling code here:
         
-        String palabraBuscar = JOptionPane.showInputDialog(null, "Ingrese la palabra a reemplazar:");
-        String palabraReemplazar = JOptionPane.showInputDialog(null, "Ingrese la palabra de reemplazo:");
+        String palabraBuscar = JOptionPane.showInputDialog("Ingrese la palabra a reemplazar:");
+        String palabraReemplazar = JOptionPane.showInputDialog("Ingrese la palabra de reemplazo:");
         reemplazar(palabraBuscar, palabraReemplazar);
     }//GEN-LAST:event_jMenuItemReemplazarActionPerformed
 
@@ -215,8 +215,8 @@ public class Ventana extends javax.swing.JFrame {
 
     private void JMenuAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuAcercaDeActionPerformed
         
-        JOptionPane.showMessageDialog(null, "Esta es una aplicación aún en desarrollo por los estudiantes de la carrera de \nIngenieria en Sistemas de la Información"
-                + " y Ciencias de la Computación de la \nUniversidad Mariano Gálvez de Guatemala, Sede Boca del Monte, \nEmerson Alvizures y Sergio Santos, del"
+        JOptionPane.showMessageDialog(null, "Esta es una aplicación aún en desarrollo por los estudiantes de la carrera de \nIngenieria en Sistemas de Información"
+                + " y Ciencias de la Computación de la \nUniversidad Mariano Gálvez de Guatemala, Sede Boca del Monte, \nEmerson Alvizures y Sergio Santos, del "
                 + "Curso de Programación III, Sección B");
         
         
