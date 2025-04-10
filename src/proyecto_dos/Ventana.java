@@ -194,7 +194,14 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemReemplazarActionPerformed
 
     private void jTextArea1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyPressed
-            //No existe codigo para este manejador de eventos
+                        
+//            jTextArea1.addKeyListener(new KeyAdapter() {
+//            public void keyTyped(KeyEvent e) {
+//                // Reiniciar el temporizador cuando el usuario escribe algo
+//                timer.restart();
+//            }
+//        });
+
     }//GEN-LAST:event_jTextArea1KeyPressed
 
     private void jMenuItemDeshacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeshacerActionPerformed
