@@ -2,6 +2,7 @@ package proyecto_dos;
 import java.util.Scanner;
 import java.util.Stack;
 import java.awt.event.*;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -11,8 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.Timer;
 import javax.swing.JTextArea;
-import static javax.swing.text.html.HTML.Tag.FONT;
-//import static javax.swing.text.html.CSS.Attribute.FONT;
+
 
 public class Ventana extends javax.swing.JFrame {
     
@@ -27,6 +27,7 @@ public class Ventana extends javax.swing.JFrame {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Icono.png")).getImage());
         
+        //Inicialización de las pilas Deshacer y Rehacer
         deshacer = new Stack<>();
         rehacer = new Stack<>();
     }
@@ -41,9 +42,6 @@ public class Ventana extends javax.swing.JFrame {
             setVisible(true);
         }
         
-        // Inicializar las pilas de deshacer y rehacer
-        
-
         @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -60,6 +58,7 @@ public class Ventana extends javax.swing.JFrame {
         jMenuItemReemplazar = new javax.swing.JMenuItem();
         jMenuItemBuscar = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        JMenuAcercaDe = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -141,7 +140,17 @@ public class Ventana extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Acerca de ?");
+        jMenu3.setText("Información");
+
+        JMenuAcercaDe.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuAcercaDe.setText("Acerca de");
+        JMenuAcercaDe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuAcercaDeActionPerformed(evt);
+            }
+        });
+        jMenu3.add(JMenuAcercaDe);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -161,8 +170,10 @@ public class Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarActionPerformed
+        Icon icono = new ImageIcon(getClass().getResource("/Buscar.png"));
+        
         guardarEstado();
-        String palabra = JOptionPane.showInputDialog("Ingrese la palabra a buscar:");
+        String palabra = JOptionPane.showInputDialog(null, "Ingrese palabra a Buscar: ");
         buscarEnABB(raizABB, palabra);
         
         
@@ -170,11 +181,7 @@ public class Ventana extends javax.swing.JFrame {
         int ubicacion = text.indexOf(palabra);
         
         resaltarPalabra(ubicacion, palabra);
-        
-        
-        
-
-       
+      
     }//GEN-LAST:event_jMenuItemBuscarActionPerformed
 
     private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed
@@ -184,8 +191,9 @@ public class Ventana extends javax.swing.JFrame {
 
     private void jMenuItemReemplazarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemReemplazarActionPerformed
         // TODO add your handling code here:
-        String palabraBuscar = JOptionPane.showInputDialog("Ingrese la palabra a reemplazar:");
-        String palabraReemplazar = JOptionPane.showInputDialog("Ingrese la palabra de reemplazo:");
+        
+        String palabraBuscar = JOptionPane.showInputDialog(null, "Ingrese la palabra a reemplazar:");
+        String palabraReemplazar = JOptionPane.showInputDialog(null, "Ingrese la palabra de reemplazo:");
         reemplazar(palabraBuscar, palabraReemplazar);
     }//GEN-LAST:event_jMenuItemReemplazarActionPerformed
 
@@ -204,6 +212,15 @@ public class Ventana extends javax.swing.JFrame {
         // TODO add your handling code here:
         rehacer();
     }//GEN-LAST:event_jMenuItemRehacerActionPerformed
+
+    private void JMenuAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuAcercaDeActionPerformed
+        
+        JOptionPane.showMessageDialog(null, "Esta es una aplicación aún en desarrollo por los estudiantes de la carrera de \nIngenieria en Sistemas de la Información"
+                + " y Ciencias de la Computación de la \nUniversidad Mariano Gálvez de Guatemala, Sede Boca del Monte, \nEmerson Alvizures y Sergio Santos, del"
+                + "Curso de Programación III, Sección B");
+        
+        
+    }//GEN-LAST:event_JMenuAcercaDeActionPerformed
 
     
 //    public static void main(String args[]) {
@@ -239,6 +256,7 @@ public class Ventana extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem JMenuAcercaDe;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
@@ -289,7 +307,7 @@ private Nodo insertarEnABB(Nodo nodo, String palabra, int posicion) {
             JOptionPane.showMessageDialog(this, "No hay más cambios para deshacer.");
         }
     }
-
+//Creación de los setters y getters
     public JMenu getjMenu2() {
         return jMenu2;
     }
