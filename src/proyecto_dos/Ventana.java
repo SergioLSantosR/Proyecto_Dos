@@ -1,3 +1,5 @@
+//Se actualiza Rama Ventana.java
+
 package proyecto_dos;
 import java.util.Scanner;
 import java.util.Stack;
@@ -154,13 +156,20 @@ public class Ventana extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItemBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarActionPerformed
-       
+    
+   private void jMenuItemBuscarActionPerformed(java.awt.event.ActionEvent evt) {   
+        guardarEstado();
         String palabra = JOptionPane.showInputDialog("Ingrese la palabra a buscar:");
-        buscar(palabra);
+        buscarEnABB(raizABB, palabra);
+        
+        
+        String text = jTextArea1.getText();
+        int ubicacion = text.indexOf(palabra);
+        
+        resaltarPalabra(ubicacion, palabra);
 
-       
-    }//GEN-LAST:event_jMenuItemBuscarActionPerformed
+}
+
 
     private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed
        
@@ -344,11 +353,11 @@ public class Ventana extends javax.swing.JFrame {
     // Función para resaltar una palabra en el JTextArea
     private void resaltarPalabra(int posicion, String palabra) {
         String texto = jTextArea1.getText();
-        int startIndex = texto.indexOf(palabra, posicion);
-        int endIndex = startIndex + palabra.length();
+        int indiceInicio = texto.indexOf(palabra, posicion);
+        int indiceFinal = indiceInicio + palabra.length();
 
-        jTextArea1.select(startIndex, endIndex);  // Seleccionar la palabra
-        jTextArea1.setSelectedTextColor(Color.RED);  // Cambiar color de la palabra
+        jTextArea1.setCaretPosition(posicion);  // Seleccionar la palabra
+        jTextArea1.moveCaretPosition(posicion + palabra.length());  // Cambiar color de la palabra
     }
 
     // Función para agregar texto y guardar el estado para deshacer
