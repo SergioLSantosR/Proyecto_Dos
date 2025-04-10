@@ -174,14 +174,12 @@ public class Ventana extends javax.swing.JFrame {
         
         guardarEstado();
         String palabra = JOptionPane.showInputDialog("Ingrese palabra a Buscar: ");
-        buscarEnABB(raizABB, palabra);
-        
+        buscarEnABB(raizABB, palabra);        
         
         String text = jTextArea1.getText();
         int ubicacion = text.indexOf(palabra);
         
-        resaltarPalabra(ubicacion, palabra);
-      
+        resaltarPalabra(ubicacion, palabra);      
     }//GEN-LAST:event_jMenuItemBuscarActionPerformed
 
     private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed
@@ -190,17 +188,14 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
     private void jMenuItemReemplazarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemReemplazarActionPerformed
-        // TODO add your handling code here:
-        
+        // TODO add your handling code here:        
         String palabraBuscar = JOptionPane.showInputDialog("Ingrese la palabra a reemplazar:");
         String palabraReemplazar = JOptionPane.showInputDialog("Ingrese la palabra de reemplazo:");
         reemplazar(palabraBuscar, palabraReemplazar);
     }//GEN-LAST:event_jMenuItemReemplazarActionPerformed
 
     private void jTextArea1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyPressed
-        // TODO add your handling code here:
-        
-
+            
     }//GEN-LAST:event_jTextArea1KeyPressed
 
     private void jMenuItemDeshacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeshacerActionPerformed
@@ -218,8 +213,7 @@ public class Ventana extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Esta es una aplicación aún en desarrollo por los estudiantes de la carrera de \nIngenieria en Sistemas de Información"
                 + " y Ciencias de la Computación de la \nUniversidad Mariano Gálvez de Guatemala, Sede Boca del Monte, \nEmerson Alvizures y Sergio Santos, del "
                 + "Curso de Programación III, Sección B");
-        
-        
+           
     }//GEN-LAST:event_JMenuAcercaDeActionPerformed
 
     
@@ -304,9 +298,10 @@ private Nodo insertarEnABB(Nodo nodo, String palabra, int posicion) {
             jTextArea1.setText(estadoAnterior);  // Restaurar el estado previo
             actualizarABB();  // Actualizar el ABB con el texto deshecho
         } else {
-            JOptionPane.showMessageDialog(this, "No hay más cambios para deshacer.");
+            JOptionPane.showMessageDialog(null, "No hay más cambios para deshacer.");
         }
     }
+    
 //Creación de los setters y getters
     public JMenu getjMenu2() {
         return jMenu2;
@@ -365,10 +360,9 @@ private Nodo insertarEnABB(Nodo nodo, String palabra, int posicion) {
             jTextArea1.setText(texto.replace(palabraBuscar, palabraReemplazar));  // Reemplazar la palabra
             actualizarABB();  // Actualizar el ABB con el nuevo texto
         } else {
-            JOptionPane.showMessageDialog(this, "La palabra a reemplazar no se encuentra en el texto.");
+            JOptionPane.showMessageDialog(null, "La palabra a reemplazar no se encuentra en el texto.");
         }
     }
-
     
     //Función para resaltar una palabra en el JTextArea
     private void resaltarPalabra(int posicion, String palabra) {
@@ -396,17 +390,16 @@ private Nodo insertarEnABB(Nodo nodo, String palabra, int posicion) {
             jTextArea1.setText(estadoRehecho);  // Restaurar el estado rehecho
             actualizarABB();  // Actualizar el ABB con el texto rehecho
         } else {
-            JOptionPane.showMessageDialog(this, "No hay más cambios para rehacer.");
+            JOptionPane.showMessageDialog(null, "No hay más cambios para rehacer.");
         }
-    }
-    
+    }    
     
     private void buscar(String palabra) {
         Nodo encontrado = buscarEnABB(raizABB, palabra);
         if (encontrado != null) {
             resaltarPalabra(encontrado.posicion, palabra);
         } else {
-            JOptionPane.showMessageDialog(this, "La palabra '" + palabra + "' no fue encontrada.");
+            JOptionPane.showMessageDialog(null, "La palabra '" + palabra + "' no fue encontrada.");
         }
     }
 
@@ -416,10 +409,8 @@ private Nodo insertarEnABB(Nodo nodo, String palabra, int posicion) {
             
             JOptionPane.showMessageDialog(null, "No existe la palabra buscada");
             
-            return null;
-            
-        }
-        
+            return null;            
+        }        
         if (palabra.equals(nodo.palabra)) {
             JOptionPane.showMessageDialog(null, "La palabra " + nodo.palabra + " si existe en el texto!");
             
@@ -431,7 +422,6 @@ private Nodo insertarEnABB(Nodo nodo, String palabra, int posicion) {
         } else {
             
             return buscarEnABB(nodo.derecha, palabra);
-            
         }
         
     }
@@ -443,6 +433,6 @@ private Nodo insertarEnABB(Nodo nodo, String palabra, int posicion) {
         System.out.println("Cambios guardados automáticamente.");
     }
 
-}
+}//Fin de la clase Ventana
 
 
