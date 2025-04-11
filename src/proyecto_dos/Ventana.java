@@ -170,7 +170,7 @@ public class Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarActionPerformed
-        //Icon icono = new ImageIcon(getClass().getResource("/Buscar.png"));        
+                
         //guardarEstado();
         String palabra = JOptionPane.showInputDialog("Ingrese palabra a Buscar: ");
         buscarEnABB(raizABB, palabra);        
