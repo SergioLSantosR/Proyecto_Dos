@@ -170,6 +170,7 @@ public class Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarActionPerformed
+
         //Icon icono = new ImageIcon(getClass().getResource("/Buscar.png"));
         
         //guardarEstado();
@@ -181,6 +182,15 @@ public class Ventana extends javax.swing.JFrame {
         int ubicacion = text.indexOf(palabra);
         
         resaltarPalabra(ubicacion, palabra);         
+
+                
+        //guardarEstado();
+//        String palabra = JOptionPane.showInputDialog("Ingrese palabra a Buscar: ");
+//        buscarEnABB(raizABB, palabra);        
+//        String text = jTextArea1.getText();
+//        int ubicacion = text.indexOf(palabra);        
+//        resaltarPalabra(ubicacion, palabra);      
+
     }//GEN-LAST:event_jMenuItemBuscarActionPerformed
 
     private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed
@@ -196,7 +206,14 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemReemplazarActionPerformed
 
     private void jTextArea1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyPressed
-            
+                        
+//            jTextArea1.addKeyListener(new KeyAdapter() {
+//            public void keyTyped(KeyEvent e) {
+//                // Reiniciar el temporizador cuando el usuario escribe algo
+//                timer.restart();
+//            }
+//        });
+
     }//GEN-LAST:event_jTextArea1KeyPressed
 
     private void jMenuItemDeshacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeshacerActionPerformed
